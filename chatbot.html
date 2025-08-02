@@ -60,16 +60,20 @@
         const ChatMessages = [
           {
             message: 'hallo chatbot',
-            sender: 'user'
+            sender: 'user',
+            key:'id1'
           }, {
             message:'hi user',
-            sender: 'robot'
+            sender: 'robot',
+            key:'id2'
           }, {
             message:'ssup nigga',
-            sender:'user'
+            sender:'user',
+            key:'id3'
           }, {
             message:'pls be respectful w language',
-            sender:'robot'
+            sender:'robot',
+            key:'id4'
           }
         ];
 
@@ -79,6 +83,7 @@
             return(
                 <ChatMessage message={chatMessage.message} //ChatMessage argument passed object as parameter, from that obj extracting message
                              sender={chatMessage.sender} //ChatMessage argument passed object as parameter, from that obj extracting sender
+                             key = {chatMessage.key}
                 />
                 // a compnent is being genrated with message and sender props, many componets will be gen in the end of loop
 
@@ -89,11 +94,12 @@
           return (
           <>
           <ChatInput />
-          {ChatMessageComponents} {// Generating <ChatMessage prop=" " prop=" " /> Components using programming now
+          {ChatMessageComponents} 
+          {// Generating <ChatMessage prop=" " prop=" " /> Components using programming now
 
-          /*Component w specific props will get genrated and then it will go to the original MAIN TEMPLATE to ask what
-          html is to be genrated with this prop data by matching w literally name of of component/function above named
-          function ChatMessage(props) */}
+          /*Component w specific props will get genrated and then it will go to the original MAIN TEMPLATE by matching w 
+          literally name of of component/function above named function ChatMessage(props) to ask what
+          html is to be genrated with this prop data  */}
           </>
           );
 
