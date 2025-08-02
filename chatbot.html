@@ -28,9 +28,11 @@
       }
 
       function ChatMessage(props) {
+        // you can directly do  function ChatMessage({message, sender}) and remove bottom two lines as props shortcut
         const message = props.message
         const sender = props.sender
-        
+
+        /*
         if (sender === 'robot') {
             return (
                 <div>
@@ -39,11 +41,13 @@
                 </div>
         );
         }
+        */
 
         return (
                <div>
+                {sender === 'robot' && <img src ="robot.png" width="50" />}
                 {message}
-                <img src="user.png" width="50" /> 
+                {sender === 'user' && <img src="user.png" width="50" />}
                 
                </div>
         );
@@ -59,6 +63,7 @@
         <ChatMessage message="hi user" sender="robot" />
         <ChatMessage message="ssup nigga" sender="user" />
         <ChatMessage message="pls be respectful w language" sender="robot" />
+        <ChatMessage message="pls be respectful w language" sender="chuttumale" />
         
         </>
       );
