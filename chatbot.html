@@ -19,7 +19,7 @@
       function ChatInput() {
         return(
           <>
-            <input placeholder="Send a message to ChatBot"/>
+            <input placeholder="Send a message to ChatBot" size="30"/>
             <button>
               prompt
             </button>
@@ -27,12 +27,22 @@
         );
       }
 
+      function ChatMessage(props) {
+        const message = props.message
+        return (
+          <div>
+             {message}
+             <img src="user.png" width="50" /> 
+          </div>
+        );
+      }
+
       const app = ( 
         <>
-        {ChatInput()}
-        <ChatInput> </ChatInput> 
+       
         <ChatInput /> 
-        <ChatInput /> 
+        <ChatMessage message="hello chatbot" />
+        
         </>
       );
 
