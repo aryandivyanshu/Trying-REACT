@@ -27,7 +27,7 @@
         );
       }
 
-      function ChatMessage(props) {
+      function ChatMessage(props) { //MAIN TEMPLATE
         // you can directly do  function ChatMessage({message, sender}) and remove bottom two lines as props shortcut
         const message = props.message
         const sender = props.sender
@@ -56,17 +56,46 @@
       }
 
       function App() { 
-        return (
-        <>
-      
-        <ChatInput /> 
-        <ChatMessage message="hello chatbot" sender="user" />
-        <ChatMessage message="hi user" sender="robot" />
-        <ChatMessage message="ssup nigga" sender="user" />
-        <ChatMessage message="pls be respectful w language" sender="robot" />
-            
-        </>
-      );
+
+        const ChatMessages = [
+          {
+            message: 'hallo chatbot',
+            sender: 'user'
+          }, {
+            message:'hi user',
+            sender: 'robot'
+          }, {
+            message:'ssup nigga',
+            sender:'user'
+          }, {
+            message:'pls be respectful w language',
+            sender:'robot'
+          }
+        ];
+
+          const ChatMessageComponents =
+          ChatMessages.map((chatMessage) => { // (chatMessages) is argument of each object of Array named ChatMessages jo uppar hai
+              //map() function takes all elements of an array and allows operations to be performed on each element 
+            return(
+                <ChatMessage message={chatMessage.message} //ChatMessage argument passed object as parameter, from that obj extracting message
+                             sender={chatMessage.sender} //ChatMessage argument passed object as parameter, from that obj extracting sender
+                />
+                // a compnent is being genrated with message and sender props, many componets will be gen in the end of loop
+
+              );
+          });
+          // arrow function allows double function usage in one place, we r using return/output of prev operation here to produce another return
+          
+          return (
+          <>
+          <ChatInput />
+          {ChatMessageComponents} {// Generating <ChatMessage prop=" " prop=" " /> Components using programming now
+
+          /*Component w specific props will get genrated and then it will go to the original MAIN TEMPLATE to ask what
+          html is to be genrated with this prop data by matching w literally name of of component/function above named
+          function ChatMessage(props) */}
+          </>
+          );
 
       }
 
