@@ -29,10 +29,11 @@
 
       function ChatMessage(props) {
         const message = props.message
+        const src = props.src
         return (
           <div>
              {message}
-             <img src="user.png" width="50" /> 
+             <img src={src} width="50" /> 
           </div>
         );
       }
@@ -41,7 +42,8 @@
         <>
        
         <ChatInput /> 
-        <ChatMessage message="hello chatbot" />
+        <ChatMessage message="hello chatbot" src="user.png" />
+        <ChatMessage message="hi user" src="robot.png" />
         
         </>
       );
