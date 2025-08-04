@@ -75,15 +75,21 @@
           }
         ];
 
-        function logHello () {
-          console.log("hello homie, this funtion will get triggered by button click");
+        function sendMessage () {
+
+          ChatMessages.push( {
+            message : "test message",
+            Sender : "User" ,
+            key : crypto.randomUUID()
+          })
+          console.log(ChatMessages);
           
         }
         
 
           return(
             <>
-              <button onClick={logHello} > Hello Logging Button </button>
+              <button onClick={sendMessage} > Send Message BUtton </button>
   
               {
                 ChatMessages.map((chatMessage) => { // (chatMessages) is argument of each object of Array named ChatMessages jo uppar hai
