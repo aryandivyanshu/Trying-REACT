@@ -75,8 +75,16 @@
           }
         ];
 
+        function logHello () {
+          console.log("hello homie, this funtion will get triggered by button click");
+          
+        }
+        
+
           return(
             <>
+              <button onClick={logHello} > Hello Logging Button </button>
+  
               {
                 ChatMessages.map((chatMessage) => { // (chatMessages) is argument of each object of Array named ChatMessages jo uppar hai
                 //map() function takes all elements of an array and allows operations to be performed on each element 
