@@ -31,7 +31,6 @@
         // you can directly do  function ChatMessage({message, sender}) and remove bottom two lines as props shortcut
         const message = props.message
         const sender = props.sender
-
         /*
         if (sender === 'robot') {
             return (
@@ -42,7 +41,6 @@
         );
         }
         */
-
         return (
                <div>
                 {sender === 'robot' && <img src ="robot.png" width="50" />}
@@ -55,7 +53,7 @@
 
       }
 
-      function App() { 
+      function ChatMessages() {
 
         const ChatMessages = [
           {
@@ -77,29 +75,44 @@
           }
         ];
 
-          const ChatMessageComponents =
-          ChatMessages.map((chatMessage) => { // (chatMessages) is argument of each object of Array named ChatMessages jo uppar hai
-              //map() function takes all elements of an array and allows operations to be performed on each element 
-            return(
-                <ChatMessage message={chatMessage.message} //ChatMessage argument passed object as parameter, from that obj extracting message
-                             sender={chatMessage.sender} //ChatMessage argument passed object as parameter, from that obj extracting sender
-                             key = {chatMessage.key}
-                />
-                // a compnent is being genrated with message and sender props, many componets will be gen in the end of loop
+          return(
+            <>
+              {
+                ChatMessages.map((chatMessage) => { // (chatMessages) is argument of each object of Array named ChatMessages jo uppar hai
+                //map() function takes all elements of an array and allows operations to be performed on each element 
 
-              );
-          });
+              
+                    return(
+                      <ChatMessage message={chatMessage.message} //ChatMessage argument passed object as parameter, from that obj extracting message
+                                  sender={chatMessage.sender} //ChatMessage argument passed object as parameter, from that obj extracting sender
+                                  key = {chatMessage.key}
+                      />
+                      // a compnent is being genrated with message and sender props, many componets will be gen in the end of loop
+
+                      // Generating <ChatMessage prop=" " prop=" " /> Components using programming now
+
+                      /*Component w specific props will get genrated and then it will go to the original MAIN TEMPLATE by matching w 
+                      literally name of of component/function above named function ChatMessage(props) to ask what
+                      html is to be genrated with this prop data  */
+                      );
+              
+                }
+          )
+              }
+            </>
+          );
           // arrow function allows double function usage in one place, we r using return/output of prev operation here to produce another return
-          
+      
+      
+      }
+
+      function App() { 
+         
           return (
           <>
           <ChatInput />
-          {ChatMessageComponents} 
-          {// Generating <ChatMessage prop=" " prop=" " /> Components using programming now
-
-          /*Component w specific props will get genrated and then it will go to the original MAIN TEMPLATE by matching w 
-          literally name of of component/function above named function ChatMessage(props) to ask what
-          html is to be genrated with this prop data  */}
+          <ChatMessages />
+          
           </>
           );
 
